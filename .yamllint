@@ -1,0 +1,39 @@
+---
+
+extends: default
+
+yaml-files:
+  # should also work on ninja templates (e.g. ansible)
+  - '*.yml.j2'
+  - '*.yaml.j2'
+
+rules:
+  # Avoid the Norway-Problem: https://hitchdev.com/strictyaml/why/implicit-typing-removed/
+  quoted-strings:
+    # GitLab CI quoting inside the 'script' block is very annoying, make an exception here
+    ignore: |
+      *.gitlab-ci.y*
+    required: true
+    quote-type: any
+  # Flow-style of defining objects. Confuses more than it helps. See: https://hitchdev.com/strictyaml/why/flow-style-removed/
+  braces:
+    forbid: true
+    level: warning
+    min-spaces-inside: 1
+    max-spaces-inside: 1
+    min-spaces-inside-empty: -1
+    max-spaces-inside-empty: -1
+  # Use one space in brackets. 
+  brackets:
+    level: warning
+    min-spaces-inside: 1
+    max-spaces-inside: 1
+    min-spaces-inside-empty: -1
+    max-spaces-inside-empty: -1
+  line-length:
+    level: warning
+    max: 120
+  comments:
+     min-spaces-from-content: 1
+     require-starting-space: false
+  document-start: false
