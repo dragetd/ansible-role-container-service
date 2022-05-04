@@ -1,0 +1,6 @@
+# Install roles from Galaxy
+# See: https://galaxy.ansible.com/docs/using/installing.html#installing-multiple-roles-from-a-file
+# Versions are set explicitly here and managed by renovate.
+collections:
+  - name: "community.docker"
+    version: "2.2.0"

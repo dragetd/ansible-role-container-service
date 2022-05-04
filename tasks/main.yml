@@ -1,0 +1,23 @@
+---
+
+- name: "Verify that passlib is correctly installed"
+  ansible.builtin.assert:
+    that:
+      # Testdata to verify. To hash something on the CLI:
+      # > ansible localhost -m debug -a "msg={{ 'teststring' | password_hash('blowfish', 'eijaengu4Refai2jeiph6i', ident='2b') }}"
+      - "'$2b$12$eijaengu4Refai2jeiph6ez4aigcJT/B.hyJut6GLeGDoThunCn8u' in ('teststring' | password_hash('blowfish', 'eijaengu4Refai2jeiph6i', ident='2b'))"
+    msg: "There seems to be a problem with 'bcrypt' hashing. Is 'passlib' (python) installed?"
+
+### Prepare  container networks
+- name: "Create external container networks"
+  community.docker.docker_network:
+    name: '{{ item }}'
+    state: present
+  loop: "{{ container_services.external_networks }}"
+  when: "container_services.external_networks is defined"
+
+- name: "Setup container services"
+  include_tasks: "container_service.yml"
+  loop_control:
+    loop_var: "service"
+  loop: "{{ container_services.services }}"

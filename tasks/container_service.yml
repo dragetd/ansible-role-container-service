@@ -1,0 +1,23 @@
+---
+
+# Deploy a container service
+
+- name: "{{ service.name }}: Create service directory"
+  ansible.builtin.file:
+    path: "{{ container_services_basedir | mandatory }}/{{ service.name }}"
+    state: "directory"
+    mode: "{{ service.volume.mode | default(default_dir_mode) }}"
+    owner: "{{ service.volume.owner | default(operator_user) }}"
+    group: "{{ service.volume.owner | default(operator_group) }}"
+
+- name: "Setup persistence storage for service"
+  include_tasks: "container_service_volume.yml"
+
+- name: "Copy service persistence store"
+  include_tasks: "container_service_files.yml"
+
+- name: "Copy compose"
+  include_tasks: "container_service_compose.yml"
+
+- name: "Flush handlers"
+  ansible.builtin.meta: "flush_handlers"

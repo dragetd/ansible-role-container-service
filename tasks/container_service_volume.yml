@@ -1,0 +1,20 @@
+---
+
+- name: "{{ service.name }}: Create volume directory"
+  ansible.builtin.file:
+    path: "{{ container_service_volumedir | mandatory }}/{{ service.name }}"
+    state: "directory"
+    mode: "{{ service.volume.mode | default(default_dir_mode) }}"
+    owner: "{{ service.volume.owner | default(operator_user) }}"
+    group: "{{ service.volume.group | default(operator_group) }}"
+  when: "service.volume is defined"
+
+- name: "{{ service.name }}: Create volume subdirectories"
+  ansible.builtin.file:
+    path: "{{ container_service_volumedir }}/{{ service.name }}/{{ item.name }}"
+    state: "directory"
+    mode: "{{ item.mode | default(default_dir_mode) }}"
+    owner: "{{ item.volume.owner | default(operator_user) }}"
+    group: "{{ item.volume.group | default(operator_group) }}"
+  loop: "{{ service.volume.subdirs }}"
+  when: "service.volume.subdirs is defined"

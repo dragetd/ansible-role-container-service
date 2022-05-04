@@ -1,0 +1,15 @@
+---
+
+# Where to put the service directories
+container_service_basedir: "/opt/service"
+
+# Where to store the state of services if configured
+container_service_volumedir: "/srv"
+
+# Default user and owner of files
+operator_user: "operator"
+operator_group: "operator"
+
+# Default access mode for files and directories
+default_file_mode: "0760"
+default_dir_mode: "0770"
