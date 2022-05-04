@@ -4,6 +4,8 @@
 ![Pipeline](https://gitlab.com/draget/ansible-role-container-service/badges/main/pipeline.svg)
 ![Coverage](https://gitlab.com/draget/ansible-role-container-service/badges/main/coverage.svg)
 
+**Warning: This project is still in its setup phase and not yet usable!**
+
 This Ansible role helps to deploy container services defined as docker-compose files. Right now it is used mostly privately and has not yet stood the test of time. Feedback welcome!
 
 **Note:** This project is maintained on [GitLab](https://gitlab.com/draget/ansible-role-container-service) and mirrored to other platforms. Please open Issues and Merge Requests on GitLab!
