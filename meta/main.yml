@@ -6,14 +6,15 @@ galaxy_info:
   #company:
 
   issue_tracker_url: "https://gitlab.com/draget/ansible-role-container-service/-/issues"
-  license: "MIT"
+  license: "license (MIT)"
 
-  min_ansible_version: "2.1"
+  min_ansible_version: "2.4"
   # min_ansible_container_version:
 
   platforms:
-  - name: "Debian"
-    versions: [ 11 ]
+    - name: "Debian"
+      versions:
+        - "bullseye"
 
   galaxy_tags:
     - "docker"
