@@ -8,8 +8,8 @@
     owner: "{{ item.owner | default( operator_user ) }}"
     group: "{{ item.volume.owner | default( operator_group ) }}"
   #    validate: "docker-compose -f %s config" # TODO, currently throws an error
+  register: "changed_container"
   notify: [ "Stop Service", "Start Service" ]
 
 - name: "Flush handlers"
   ansible.builtin.meta: "flush_handlers"
-

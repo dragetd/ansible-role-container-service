@@ -37,7 +37,7 @@ To configure the services, specify the following variables (example):
 # Container services variables template
 container_services:
   # External Docker networks to be created
-  external_network: [ "foobar" ]
+  external_networks: [ "foobar" ]
   services:
     # Service name is used for dirs and such, should be lowercase
     - name: "example"
@@ -45,7 +45,7 @@ container_services:
       volume:
         mode: "0700"
         owner: "exampleEve"
-        # Optional. Extra subdirs
+        # Optional. Extra subdirectories
         subdirs:
           - name: "exampleDatabaseDir"
           - name: "otherExample"

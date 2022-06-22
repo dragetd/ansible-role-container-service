@@ -10,9 +10,9 @@
 
 ### Prepare  container networks
 - name: "Create external container networks"
-  community.docker.docker_network:
-    name: '{{ item }}'
-    state: present
+  docker_network:
+    name: "{{ item }}"
+    state: "present"
   loop: "{{ container_services.external_networks }}"
   when: "container_services.external_networks is defined"
 

@@ -1,18 +1,18 @@
----
-
 - name: "Stop Service"
   community.docker.docker_compose:
     project_src: "{{ changed_container.dest | dirname }}"
     remove_orphans: true
     files: "docker-compose.yml"
     state: "absent"
+    ignore_errors: "{{ ansible_check_mode }}"
 
 - name: "Start Service"
   community.docker.docker_compose:
     project_src: "{{ changed_container.dest | dirname }}"
     files: "docker-compose.yml"
     state: "present"
+    ignore_errors: "{{ ansible_check_mode }}"
 
 - name: "Reset changed_container variable"
   ansible.builtin.set_fact:
-    changed_container: {}
+    changed_container: { }
