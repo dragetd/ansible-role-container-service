@@ -2,10 +2,10 @@
 
 galaxy_info:
   author: "Draget"
-  description: "This Ansible role helps to deploy container services defined as docker-compose files."
+  description: "This Ansible role helps to deploy container services defined as docker-compose files. Still in development, do not use yet!"
   #company:
 
-  issue_tracker_url: "https://gitlab.com/draget/ansible-role-container-service/-/issues"
+  issue_tracker_url: "https://gitlab.com/draget/ansible-role-container-services/-/issues"
   license: "license (MIT)"
 
   min_ansible_version: "2.4"
@@ -22,4 +22,4 @@ galaxy_info:
     - "compose"
     - "orchestration"
 
-dependencies: []
+dependencies: [ ]
