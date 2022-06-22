@@ -21,14 +21,14 @@ TODO
 
 ## Role Variables
 
-| Variable                      | Default        | Description                                            |
-|-------------------------------|----------------|--------------------------------------------------------|
-| `container_service_basedir`   | `/opt/service` | Base directory of services                             |
-| `container_service_volumedir` | `/srv`         | Where to create directories for persistent host-mounts |
-| `operator_user`               | `operator`     | Default user of files                                  |
-| `operator_group`              | `operator`     | Default group of files                                 |
-| `default_file_mode`           | `0760`         | Default access mode for files                          |
-| `default_dir_mode`            | `0770`         | Default access mode for directories                    |
+| Variable                       | Default        | Description                                            |
+|--------------------------------|----------------|--------------------------------------------------------|
+| `container_services_basedir`   | `/opt/service` | Base directory of services                             |
+| `container_services_volumedir` | `/srv`         | Where to create directories for persistent host-mounts |
+| `operator_user`                | `operator`     | Default user of files                                  |
+| `operator_group`               | `operator`     | Default group of files                                 |
+| `default_file_mode`            | `0760`         | Default access mode for files                          |
+| `default_dir_mode`             | `0770`         | Default access mode for directories                    |
 
 To configure the services, specify the following variables (example):
 

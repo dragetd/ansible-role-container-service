@@ -3,7 +3,7 @@
 - name: "{{ service.name }}: Copy compose"
   ansible.builtin.template:
     src: "container_service_files/{{ service.name }}/docker-compose.yml.j2"
-    dest: "{{ container_service_basedir }}/{{ service.name }}/docker-compose.yml"
+    dest: "{{ container_services_basedir }}/{{ service.name }}/docker-compose.yml"
     mode: "{{ item.mode | default( default_file_mode ) }}"
     owner: "{{ item.owner | default( operator_user ) }}"
     group: "{{ item.volume.owner | default( operator_group ) }}"

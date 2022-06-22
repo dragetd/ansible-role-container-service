@@ -4,7 +4,7 @@
 - name: "{{ service.name }}: Copy static files"
   ansible.builtin.copy:
     src: "container_service_files/{{ service.name }}/{{ item.name }}"
-    dest: "{{ container_service_basedir }}/{{ service.name }}/{{ item.name }}"
+    dest: "{{ container_services_basedir }}/{{ service.name }}/{{ item.name }}"
     mode: "{{ item.mode | default(default_file_mode) }}"
     owner: "{{ item.owner | default(operator_user) }}"
     group: "{{ item.group | default(operator_group) }}"
@@ -30,7 +30,7 @@
 - name: "{{ service.name }}: Copy templated files"
   ansible.builtin.template:
     src: "container_service_files/{{ service.name }}/{{ item.name }}.j2"
-    dest: "{{ container_service_basedir }}/{{ service.name }}/{{ item.name }}"
+    dest: "{{ container_services_basedir }}/{{ service.name }}/{{ item.name }}"
     mode: "{{ item.mode | default(default_file_mode) }}"
     owner: "{{ item.owner | default(operator_user) }}"
     group: "{{ item.group | default(operator_group) }}"
