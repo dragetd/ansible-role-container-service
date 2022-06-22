@@ -1,0 +1,32 @@
+---
+
+variables:
+  ANSIBLE_FORCE_COLOR: "true"
+  PY_COLORS: "true"
+
+default:
+  image: "debian:11"
+  before_script:
+    - apt update
+    - apt install -y --no-install-recommends python3-pip
+    - pip3 install ansible-core
+
+test:
+  stage: "test"
+  variables:
+    MOLECULE_DISTRO: "debian11"
+  script:
+    - pip3 install ansible molecule[docker] docker
+    - molecule test
+
+lint:
+  stage: "test"
+  script:
+    - pip3 install yamllint
+    - yamllint .
+
+deploy-galaxy:
+  stage: "deploy"
+  only: [ "tags" ]
+  script:
+    - ansible-galaxy role import --api-key ${GALAXY_API_KEY} ${GALAXY_REPO}
