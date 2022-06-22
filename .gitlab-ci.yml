@@ -29,6 +29,7 @@ deploy-galaxy:
   stage: "deploy"
   only: [ "tags" ]
   # Ansible role deployed via GitHub repository, which might need some time to sync.
+  when: "delayed"
   start_in: "15 minutes"
   script:
     - ansible-galaxy role import --api-key ${GALAXY_API_KEY} ${GALAXY_REPO}
