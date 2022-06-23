@@ -1,3 +1,5 @@
+---
+
 - name: "Stop Service"
   community.docker.docker_compose:
     project_src: "{{ changed_container.dest | dirname }}"
